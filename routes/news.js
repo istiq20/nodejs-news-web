@@ -53,4 +53,8 @@ newsRoute.post('/search', async(req, res) => {
     }
 })
 
+newsRoute.get('/about', (req, res) => {
+  res.status(200).render('about.ejs')
+})
+
 module.exports = newsRoute;
