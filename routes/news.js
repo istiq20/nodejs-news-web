@@ -57,4 +57,8 @@ newsRoute.get('/about', (req, res) => {
   res.status(200).render('about.ejs')
 })
 
+newsRoute.get('/*', (req, res) => {
+  res.status(404).send('404: Page not found!')
+})
+
 module.exports = newsRoute;
