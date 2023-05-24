@@ -23,4 +23,19 @@ newsRoute.get('/', async(req, res) => {
       }
 })
 
+newsRoute.get('/news/:category', async(req, res) => {
+  var category = req.params.category;
+  try {
+      var url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=1235311a10564850bd45dd4a2400da4c`;
+      
+      const getNews = await axios.get(url);
+      // console.log(getNews);
+      res.status(200).render('category.ejs', { articles: getNews.data.articles})
+    } catch (error) {
+      if(error.response) {
+        console.log(error)
+      } 
+    }
+})
+
 module.exports = newsRoute;
